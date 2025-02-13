@@ -37,7 +37,7 @@ function ChatView({ id }) {
 
         if (error) {
           console.log(error);
-        };
+        }
 
         setMessages(JSON.parse(data.prompt) || []);
       } catch (error) {
@@ -45,7 +45,9 @@ function ChatView({ id }) {
       }
     };
 
-    if (id) getMessages();
+    if (id) {
+      getMessages();
+    }
   }, [id]);
 
   useEffect(() => {
