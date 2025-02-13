@@ -204,21 +204,21 @@ function CodeView({ id }) {
 
   const generateCode = async () => {
     setLoad(true);
-    // const res = await fetch("/api/gen-code", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ prompt: PROMPT }),
-    // });
+    const res = await fetch("/api/gen-code", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt: PROMPT }),
+    });
 
-    // const data = await res.json();
+    const data = await res.json();
 
-    // const aiResp = data;
-    // const mergedFiles = { ...demofiles, ...aiResp?.files };
+    const aiResp = data;
+    const mergedFiles = { ...demofiles, ...aiResp?.files };
 
-    // setFiles(mergedFiles);
-    // uploadFiles(mergedFiles);
+    setFiles(mergedFiles);
+    uploadFiles(mergedFiles);
     setLoad(false);
   };
 
