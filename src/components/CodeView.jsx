@@ -177,6 +177,16 @@ function CodeView({ id }) {
   }, [messages]);
 
   useEffect(() => {
+    if (messages?.length > 0) {
+      const role = messages[messages.length - 1]?.role;
+
+      if (role === "user") {
+        generateCode();
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     const getFiles = async () => {
       setLoad(true);
 
@@ -209,7 +219,7 @@ function CodeView({ id }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ prompt: PROMPT }),
+      body: JSON.stringify({ prompt: codePrompt }),
     });
 
     const data = await res.json();
